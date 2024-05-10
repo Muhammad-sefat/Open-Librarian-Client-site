@@ -31,7 +31,7 @@ const Navbar = () => {
                 <NavLink
                   to={"/"}
                   className={({ isActive }) =>
-                    isActive ? "active text-lime-600" : ""
+                    isActive ? " text-lime-600" : ""
                   }
                 >
                   Home
@@ -41,7 +41,7 @@ const Navbar = () => {
                 <NavLink
                   to={"/add-book"}
                   className={({ isActive }) =>
-                    isActive ? "active text-lime-600" : ""
+                    isActive ? " text-lime-600" : ""
                   }
                 >
                   Add Books
@@ -51,7 +51,7 @@ const Navbar = () => {
                 <NavLink
                   to={"/borrowed-book"}
                   className={({ isActive }) =>
-                    isActive ? "active text-lime-600" : ""
+                    isActive ? "text-lime-600" : ""
                   }
                 >
                   Borrowed Books
@@ -92,7 +92,7 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <Link className="btn">Login</Link>
+          <Link to={"/login"}>Login</Link>
           <div className="dropdown dropdown-end">
             <div
               tabIndex={0}
@@ -111,10 +111,10 @@ const Navbar = () => {
               className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
             >
               <li>
-                <a>Login</a>
+                <NavLink to={"/login"}>Login</NavLink>
               </li>
               <li>
-                <a>Register</a>
+                <NavLink to={"/register"}>Register</NavLink>
               </li>
               <li>
                 <a>Logout</a>
