@@ -66,7 +66,17 @@ const Navbar = () => {
                     isActive ? " text-lime-600" : ""
                   }
                 >
-                  Add Books
+                  Add Book
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to={"/all-books"}
+                  className={({ isActive }) =>
+                    isActive ? " text-lime-600" : ""
+                  }
+                >
+                  All Books
                 </NavLink>
               </li>
               <li>
@@ -101,7 +111,15 @@ const Navbar = () => {
                 to={"/add-book"}
                 className={({ isActive }) => (isActive ? " text-lime-600" : "")}
               >
-                Add Books
+                Add Book
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to={"/all-books"}
+                className={({ isActive }) => (isActive ? " text-lime-600" : "")}
+              >
+                All Books
               </NavLink>
             </li>
             <li>
