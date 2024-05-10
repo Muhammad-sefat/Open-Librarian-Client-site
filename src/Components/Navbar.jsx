@@ -1,9 +1,14 @@
 import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "./AuthProvider";
+import toast from "react-hot-toast";
 
 const Navbar = () => {
-  const { logOut } = useContext(AuthContext);
+  const { logOut, user } = useContext(AuthContext);
+  const handleLogOut = () => {
+    logOut();
+    toast("LogOut Successfull");
+  };
   return (
     <div>
       <div className="navbar bg-base-100 relative z-50">
@@ -94,35 +99,45 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <Link to={"/login"}>Login</Link>
-          <div className="dropdown dropdown-end">
-            <div
-              tabIndex={0}
-              role="button"
-              className="btn btn-ghost btn-circle avatar"
+          {!user && (
+            <Link
+              to={"/login"}
+              className="p-2 border rounded-md border-lime-600"
             >
-              <div className="w-10 rounded-full">
-                <img
-                  alt="Tailwind CSS Navbar component"
-                  src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
-                />
+              Login
+            </Link>
+          )}
+          {user && (
+            <div className="dropdown dropdown-end">
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost btn-circle avatar"
+              >
+                <div className="w-10 rounded-full">
+                  <img
+                    title={user?.displayName}
+                    alt="Tailwind CSS Navbar component"
+                    src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                  />
+                </div>
               </div>
+              <ul
+                tabIndex={0}
+                className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+              >
+                <li>
+                  <NavLink to={"/login"}>Login</NavLink>
+                </li>
+                <li>
+                  <NavLink to={"/register"}>Register</NavLink>
+                </li>
+                <li>
+                  <a onClick={handleLogOut}>Logout</a>
+                </li>
+              </ul>
             </div>
-            <ul
-              tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
-            >
-              <li>
-                <NavLink to={"/login"}>Login</NavLink>
-              </li>
-              <li>
-                <NavLink to={"/register"}>Register</NavLink>
-              </li>
-              <li>
-                <a onClick={logOut}>Logout</a>
-              </li>
-            </ul>
-          </div>
+          )}
         </div>
       </div>
     </div>
