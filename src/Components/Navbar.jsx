@@ -104,7 +104,7 @@ const Navbar = () => {
           {!user && (
             <Link
               to={"/login"}
-              className="p-2 border rounded-md border-lime-600"
+              className="p-2 border font-medium rounded-md border-lime-600"
             >
               Login
             </Link>
