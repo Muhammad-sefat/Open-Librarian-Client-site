@@ -4,7 +4,7 @@ import Footer from "./Components/Footer";
 
 function App() {
   return (
-    <div className="container px-12 mx-auto my-5">
+    <div className="container px-12 mx-auto my-5 font-lato">
       <Navbar></Navbar>
       <Outlet></Outlet>
       <Footer></Footer>
