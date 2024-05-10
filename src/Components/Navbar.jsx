@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "./AuthProvider";
 import toast from "react-hot-toast";
+import logo from "../../public/logo.jpg";
 
 const Navbar = () => {
   const { logOut, user } = useContext(AuthContext);
@@ -66,6 +67,7 @@ const Navbar = () => {
               </li>
             </ul>
           </div>
+          <img className="w-16 rounded-lg" src={logo} alt="" />
           <a className="btn btn-ghost gap-0 text-2xl font-bold">
             Open<span className="text-lime-600">Librarian</span>
           </a>
