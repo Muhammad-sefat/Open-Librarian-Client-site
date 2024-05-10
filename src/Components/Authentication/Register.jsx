@@ -6,7 +6,8 @@ import { AuthContext } from "../AuthProvider";
 import { NavLink, useNavigate } from "react-router-dom";
 
 const Register = () => {
-  const { createUser } = useContext(AuthContext);
+  const { createUser, updateUserProfile, setUser, user } =
+    useContext(AuthContext);
   const [showBtn, setShowBtn] = useState(false);
   const navigate = useNavigate();
   const {
@@ -16,20 +17,23 @@ const Register = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    const { email, password } = data;
+  const onSubmit = async (data) => {
+    const { email, password, photo, name } = data;
     if (!/^(?=.*[a-z])(?=.*[A-Z]).{6,}$/.test(password)) {
       toast("Please Provide More Stronge Password");
       return;
     }
-    createUser(email, password)
-      .then((result) => {
-        console.log(result.user);
-        toast("Register Successfully");
-        reset();
-        navigate("/");
-      })
-      .catch((error) => toast(error));
+    try {
+      const result = await createUser(email, password);
+      updateUserProfile(name, photo);
+      setUser({ ...user?.email, photoURL: photo, displayName: name });
+      console.log(result.user);
+      toast("Register Successfully");
+      reset();
+      navigate("/");
+    } catch (error) {
+      toast(error);
+    }
   };
   return (
     <div>
@@ -42,7 +46,7 @@ const Register = () => {
           >
             <form className="card-body" onSubmit={handleSubmit(onSubmit)}>
               <div className="form-control">
-                <p className="text-4xl font-bold text-orange-500 pb-3">
+                <p className="text-4xl font-bold text-lime-500 pb-3">
                   Register Now!
                 </p>
                 <label className="label">
@@ -82,7 +86,11 @@ const Register = () => {
                   type="text"
                   placeholder="photoURL"
                   className="input input-bordered"
+                  {...register("photo", { required: true })}
                 />
+                {errors.photo && (
+                  <span className="text-red-500">This field is required</span>
+                )}
               </div>
               <div className="form-control">
                 <label className="label">
@@ -107,9 +115,7 @@ const Register = () => {
                 )}
               </div>
               <div className="form-control mt-6">
-                <button className="btn bg-orange-500 text-white">
-                  Register
-                </button>
+                <button className="btn bg-lime-500 text-lg">Register</button>
               </div>
             </form>
             <p className="text-center py-3">
