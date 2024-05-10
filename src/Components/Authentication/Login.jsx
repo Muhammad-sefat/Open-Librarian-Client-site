@@ -3,6 +3,8 @@ import { AuthContext } from "../AuthProvider";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { useForm } from "react-hook-form";
+import lottie from "../../assets/login.json";
+import Lottie from "lottie-react";
 
 const Login = () => {
   const { signIn, signInWithGoogle } = useContext(AuthContext);
@@ -41,8 +43,8 @@ const Login = () => {
     }
   };
   return (
-    <div>
-      <div className="w-full max-w-md p-4 rounded-md shadow sm:p-8 dark:bg-gray-50 dark:text-gray-800">
+    <div className="flex">
+      <div className=" p-4 rounded-md shadow sm:p-8 dark:bg-gray-50 dark:text-gray-800">
         <h2 className="mb-3 text-3xl font-bold text-center text-lime-500">
           Login to your account
         </h2>
@@ -145,6 +147,9 @@ const Login = () => {
             Sign in
           </button>
         </form>
+      </div>
+      <div>
+        <Lottie animationData={lottie} loop={true}></Lottie>
       </div>
     </div>
   );
