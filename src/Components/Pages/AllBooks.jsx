@@ -4,11 +4,9 @@ import SingleBook from "./SingleBook";
 
 const AllBooks = () => {
   const [books, setBooks] = useState([]);
-  console.log(books);
   useEffect(() => {
     const getData = async () => {
       const { data } = await axios("http://localhost:5000/books");
-      console.log(data);
       setBooks(data);
     };
     getData();

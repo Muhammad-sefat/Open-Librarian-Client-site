@@ -1,5 +1,7 @@
+import { Link } from "react-router-dom";
+
 const SingleBook = ({ book }) => {
-  const { name, photo, description, author, rating } = book;
+  const { name, photo, description, author, rating, _id } = book;
   return (
     <div>
       <div className="card card-side  bg-base-100 shadow-xl">
@@ -12,7 +14,9 @@ const SingleBook = ({ book }) => {
           <p>{description}</p>
           <p>{rating}</p>
           <div className="card-actions justify-end">
-            <button className="btn bg-lime-500">Update</button>
+            <Link to={`/updateBook/${_id}`}>
+              <button className="btn bg-lime-500">Update</button>
+            </Link>
           </div>
         </div>
       </div>
