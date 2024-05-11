@@ -4,6 +4,8 @@ import toast from "react-hot-toast";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { AuthContext } from "../AuthProvider";
 import { NavLink, useNavigate } from "react-router-dom";
+import lottie from "../../assets/register.json";
+import Lottie from "lottie-react";
 
 const Register = () => {
   const { createUser, updateUserProfile, setUser, user } =
@@ -40,9 +42,16 @@ const Register = () => {
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div
+            data-aos="fade-right"
+            data-aos-duration="1000"
+            className="md:w-[50%] text-center lg:text-left"
+          >
+            <Lottie animationData={lottie} loop={true}></Lottie>
+          </div>
+          <div
             data-aos="fade-left"
             data-aos-duration="1000"
-            className="card shrink-0 w-full max-w-lg shadow-2xl bg-base-100"
+            className="card shrink-0 w-full md:w-[50%] shadow-2xl bg-base-100"
           >
             <form className="card-body" onSubmit={handleSubmit(onSubmit)}>
               <div className="form-control">
@@ -125,23 +134,6 @@ const Register = () => {
                 <span className="text-blue-500 font-medium">Login</span>
               </NavLink>
             </p>
-          </div>
-          <div
-            data-aos="fade-right"
-            data-aos-duration="1000"
-            className="text-center lg:text-left"
-          >
-            <p className="text-2xl md:text-4xl font-bold py-3">
-              Importants Of Craft
-            </p>
-            <p className="font-medium pb-4">
-              {" "}
-              Craft encourages critical thinking and problem-solving skills.
-              When analyzing or creating art, individuals must observe,
-              interpret, and make decisions, fostering analytical thinking and
-              cognitive development.
-            </p>
-            <img className="rounded-md" src={""} alt="image" />
           </div>
         </div>
       </div>

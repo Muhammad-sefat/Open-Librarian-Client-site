@@ -44,7 +44,7 @@ const Login = () => {
   };
   return (
     <div className="flex">
-      <div className=" p-4 rounded-md shadow sm:p-8 dark:bg-gray-50 dark:text-gray-800">
+      <div className="md:w-[50%] p-4 rounded-md shadow sm:p-8 dark:bg-gray-50 dark:text-gray-800">
         <h2 className="mb-3 text-3xl font-bold text-center text-lime-500">
           Login to your account
         </h2>
@@ -148,7 +148,7 @@ const Login = () => {
           </button>
         </form>
       </div>
-      <div>
+      <div className="p-5 md:w-[50%]">
         <Lottie animationData={lottie} loop={true}></Lottie>
       </div>
     </div>

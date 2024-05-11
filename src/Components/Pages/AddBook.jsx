@@ -1,8 +1,33 @@
 const AddBook = () => {
+  const handleAddBook = async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.bookname.value;
+    const photo = form.photo.value;
+    const category = form.category.value;
+    const description = form.description.value;
+    const author = form.author.value;
+    const quantity = parseFloat(form.quantity.value);
+    const rating = form.rating.value;
+    const aboutBook = form.aboutbook.value;
+
+    const newBook = {
+      name,
+      photo,
+      category,
+      description,
+      author,
+      quantity,
+      rating,
+      aboutBook,
+    };
+    console.log(newBook);
+  };
   return (
     <div>
       <section className="p-3 dark:bg-gray-100 dark:text-gray-900">
         <form
+          onSubmit={handleAddBook}
           noValidate=""
           action=""
           className="container flex flex-col mx-auto space-y-12"
@@ -17,7 +42,7 @@ const AddBook = () => {
             </div>
             <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
               <div className="col-span-full mb-8">
-                <h2 className="text-center text-3xl text-lime-600 font-semibold">
+                <h2 className="text-center text-lg md:text-3xl text-lime-600 font-semibold">
                   Add You Book
                 </h2>
                 <p className="md:w-[80%] mx-auto text-center mt-3">
@@ -89,6 +114,7 @@ const AddBook = () => {
                 <input
                   id="author"
                   type="text"
+                  name="author"
                   placeholder="Author"
                   className="w-full border border-lime-500 p-2 rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
                 />
@@ -100,6 +126,7 @@ const AddBook = () => {
                 <input
                   id="quantity"
                   type="text"
+                  name="quantity"
                   placeholder="Quantity"
                   className="w-full border border-lime-500 p-2 rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
                 />
@@ -111,17 +138,19 @@ const AddBook = () => {
                 <input
                   id="rating"
                   type="text"
+                  name="rating"
                   placeholder="Rating"
                   className="w-full border border-lime-500 p-2 rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
                 />
               </div>
               <div className="col-span-full">
-                <label htmlFor="bio" className="text-lg font-semibold">
+                <label htmlFor="about-book" className="text-lg font-semibold">
                   About Book
                 </label>
                 <textarea
-                  id="bio"
-                  placeholder=" Books are a treasure trove of information, providing insights into different subjects, cultures, and perspectives. They expand our understanding of the world and enhance our knowledge base."
+                  id="about-book"
+                  name="aboutbook"
+                  defaultValue=" Books are a treasure trove of information, providing insights into different subjects, cultures, and perspectives. They expand our understanding of the world and enhance our knowledge base.the benefits of reading books are multifaceted, contributing to intellectual stimulation, emotional well-being, personal growth, and enjoyment of life."
                   className="w-full border border-lime-500 p-2 rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
                 ></textarea>
               </div>
