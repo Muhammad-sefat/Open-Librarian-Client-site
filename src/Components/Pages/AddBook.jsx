@@ -1,3 +1,6 @@
+import axios from "axios";
+import toast from "react-hot-toast";
+
 const AddBook = () => {
   const handleAddBook = async (e) => {
     e.preventDefault();
@@ -8,7 +11,7 @@ const AddBook = () => {
     const description = form.description.value;
     const author = form.author.value;
     const quantity = parseFloat(form.quantity.value);
-    const rating = form.rating.value;
+    const rating = parseFloat(form.rating.value);
     const aboutBook = form.aboutbook.value;
 
     const newBook = {
@@ -22,6 +25,14 @@ const AddBook = () => {
       aboutBook,
     };
     console.log(newBook);
+    try {
+      const { data } = await axios.post(`http://localhost:5000/book`, newBook);
+      console.log(data);
+      toast("Add Job Successfully");
+      e.target.reset();
+    } catch (err) {
+      toast(err?.message);
+    }
   };
   return (
     <div>
@@ -89,6 +100,7 @@ const AddBook = () => {
                   className="w-full border border-lime-500 p-2 rounded-md focus:ring focus:ring-opacity-75 dark:text-gray-50 focus:dark:ring-violet-600 dark:border-gray-300"
                 >
                   <option>Novel</option>
+                  <option>Self-Help</option>
                   <option>Thriller</option>
                   <option>History</option>
                   <option>Drama</option>

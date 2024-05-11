@@ -6,6 +6,7 @@ import Home from "./Pages/Home";
 import ErrorPage from "./ErrorPage";
 import AddBook from "./Pages/AddBook";
 import PrivateRoute from "./PrivateRoute";
+import AllBooks from "./Pages/AllBooks";
 
 const Router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ const Router = createBrowserRouter([
             <AddBook></AddBook>
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/all-books",
+        element: <AllBooks></AllBooks>,
       },
       {
         path: "/login",
