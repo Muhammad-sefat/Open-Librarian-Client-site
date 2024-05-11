@@ -42,15 +42,15 @@ const Register = () => {
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <div
-            data-aos="fade-right"
-            data-aos-duration="1000"
-            className="md:w-[50%] text-center lg:text-left"
+            // data-aos="fade-right"
+            // data-aos-duration="1000"
+            className="md:w-[50%]"
           >
             <Lottie animationData={lottie} loop={true}></Lottie>
           </div>
           <div
-            data-aos="fade-left"
-            data-aos-duration="1000"
+            // data-aos="fade-left"
+            // data-aos-duration="1000"
             className="card shrink-0 w-full md:w-[50%] shadow-2xl bg-base-100"
           >
             <form className="card-body" onSubmit={handleSubmit(onSubmit)}>

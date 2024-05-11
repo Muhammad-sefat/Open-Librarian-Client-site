@@ -43,18 +43,58 @@ const AddBook = () => {
           action=""
           className="container flex flex-col mx-auto space-y-12"
         >
-          <fieldset className="grid grid-cols-4 gap-6 p-6 rounded-md shadow-sm dark:bg-gray-50">
-            <div className="space-y-2 col-span-full lg:col-span-1">
-              <p className="font-medium">Personal Inormation</p>
-              <p className="text-xs">
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Adipisci fuga autem eum!
+          <fieldset className="grid grid-cols-5 gap-6 p-6 rounded-md shadow-sm dark:bg-gray-50">
+            <div className="space-y-2 col-span-full lg:col-span-2">
+              <p className="text-2xl font-semibold">Benefit of Reading Book</p>
+              <p>
+                <span className="text-lg font-semibold">
+                  Knowledge and Learning:
+                </span>{" "}
+                Books are a treasure trove of information, providing insights
+                into different subjects, cultures, and perspectives. They expand
+                our understanding of the world and enhance our knowledge base.
+              </p>
+              <p>
+                <span className="text-lg font-semibold">
+                  Improves Cognitive Abilities:
+                </span>{" "}
+                Reading exercises the brain, improving concentration, critical
+                thinking, and problem-solving skills. It enhances vocabulary and
+                language skills, fostering effective communication.
+              </p>
+              <p>
+                <span className="text-lg font-semibold">
+                  Stress Reduction and Relaxation:
+                </span>{" "}
+                Immersing oneself in a good book can be a form of escapism,
+                reducing stress and anxiety. It provides a mental break from the
+                pressures of daily life, promoting relaxation and mental
+                well-being.
+              </p>
+              <p>
+                <span className="text-lg font-semibold">
+                  Empathy and Emotional Intelligence:
+                </span>{" "}
+                Fictional stories allow readers to step into the shoes of
+                diverse characters, fostering empathy and emotional
+                intelligence. They promote understanding of different
+                perspectives and experiences, enhancing interpersonal
+                relationships.
+              </p>
+              <p>
+                <span className="text-lg font-semibold">
+                  Personal Growth and Development:
+                </span>{" "}
+                Reading self-help and personal development books can facilitate
+                self-reflection, growth, and transformation. They offer valuable
+                insights, guidance, and inspiration for achieving personal and
+                professional goals.
               </p>
             </div>
             <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3">
               <div className="col-span-full mb-8">
                 <h2 className="text-center text-lg md:text-3xl text-lime-600 font-semibold">
-                  Add You Book
+                  Add Your Book
                 </h2>
                 <p className="md:w-[80%] mx-auto text-center mt-3">
                   {" "}
