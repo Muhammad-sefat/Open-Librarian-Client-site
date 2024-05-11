@@ -1,9 +1,11 @@
 import axios from "axios";
 import toast from "react-hot-toast";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const UpdateBook = () => {
   const singleBook = useLoaderData();
+  const navigate = useNavigate();
   const { name, photo, category, author, rating, _id } = singleBook;
   console.log(singleBook);
   const handleUpdateBook = async (e) => {
@@ -30,6 +32,16 @@ const UpdateBook = () => {
         updateBook
       );
       console.log(data);
+      if (data.modifiedCount > 0) {
+        Swal.fire({
+          title: "Success!",
+          text: "Update Book Successfully",
+          icon: "success",
+          confirmButtonText: "Cool",
+        });
+        form.reset();
+        navigate("/all-books");
+      }
     } catch (error) {
       toast(error?.message);
     }
