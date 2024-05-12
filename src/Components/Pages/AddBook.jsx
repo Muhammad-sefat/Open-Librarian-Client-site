@@ -24,11 +24,10 @@ const AddBook = () => {
       rating,
       aboutBook,
     };
-    console.log(newBook);
     try {
       const { data } = await axios.post(`http://localhost:5000/book`, newBook);
       console.log(data);
-      toast("Add Job Successfully");
+      toast("Add Book Successfully");
       e.target.reset();
     } catch (err) {
       toast(err?.message);

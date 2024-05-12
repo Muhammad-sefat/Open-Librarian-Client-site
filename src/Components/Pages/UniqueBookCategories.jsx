@@ -11,7 +11,6 @@ const UniqueBookCategories = () => {
     const getData = async () => {
       try {
         const { data } = await axios(`http://localhost:5000/subBooks`);
-        console.log(data);
         setSubBooks(data);
       } catch (error) {
         toast(error.message);

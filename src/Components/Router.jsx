@@ -10,6 +10,7 @@ import AllBooks from "./Pages/AllBooks";
 import UpdateBook from "./Pages/UpdateBook";
 import UniqueBookCategories from "./Pages/UniqueBookCategories";
 import UniqueBookCategoryDetails from "./Pages/UniqueBookCategoryDetails";
+import BorrowedBooks from "./Pages/BorrowedBooks";
 
 const Router = createBrowserRouter([
   {
@@ -50,6 +51,10 @@ const Router = createBrowserRouter([
         element: <UniqueBookCategoryDetails></UniqueBookCategoryDetails>,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/subBooks/${params.id}`),
+      },
+      {
+        path: "/borrowed-book",
+        element: <BorrowedBooks></BorrowedBooks>,
       },
       {
         path: "/login",

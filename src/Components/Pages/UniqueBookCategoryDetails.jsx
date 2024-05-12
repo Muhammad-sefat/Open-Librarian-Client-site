@@ -43,7 +43,12 @@ const UniqueBookCategoryDetails = () => {
                 >
                   Borrow
                 </button>
-                {showModel && <MyModel handleSubmit={handleSubmit}></MyModel>}
+                {showModel && (
+                  <MyModel
+                    handleSubmit={handleSubmit}
+                    uniqueBookDetails={uniqueBookDetails}
+                  ></MyModel>
+                )}
               </div>
             </div>
             <img
