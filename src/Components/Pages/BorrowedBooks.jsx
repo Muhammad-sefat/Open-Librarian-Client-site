@@ -4,14 +4,14 @@ import toast from "react-hot-toast";
 import SingleBorrowBook from "./SingleBorrowBook";
 
 const BorrowedBooks = () => {
-  const [borrowedBooks, setBorrowedBook] = useState([]);
+  const [borrowedBooks, setBorrowedBooks] = useState([]);
   console.log(borrowedBooks);
   useEffect(() => {
     const getData = async () => {
       try {
-        const { data } = await axios("http://localhost:5000/borrowedBook");
+        const { data } = await axios.get("http://localhost:5000/borrowedBook");
         console.log(data);
-        setBorrowedBook(data);
+        setBorrowedBooks(data);
       } catch (error) {
         toast(error.message);
       }
@@ -25,7 +25,12 @@ const BorrowedBooks = () => {
       </h2>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 my-8">
         {borrowedBooks.map((book) => (
-          <SingleBorrowBook key={book._id} book={book}></SingleBorrowBook>
+          <SingleBorrowBook
+            key={book._id}
+            book={book}
+            borrowedBooks={borrowedBooks}
+            setBorrowedBooks={setBorrowedBooks}
+          ></SingleBorrowBook>
         ))}
       </div>
     </div>

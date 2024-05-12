@@ -48,7 +48,7 @@ const MyModel = ({ handleSubmit, uniqueBookDetails }) => {
       toast("Book Borrowed Successfully");
       e.target.reset();
       const { data2 } = await axios.delete(
-        `http://localhost:5000/SubBooks/${_id}`
+        `http://localhost:5000/SubBookss/${_id}`
       );
       console.log(data2);
       navigate("/borrowed-book");
