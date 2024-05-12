@@ -1,9 +1,16 @@
+import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
+import MyModel from "./MyModel";
 
 const UniqueBookCategoryDetails = () => {
+  const [showModel, setShowModel] = useState(false);
   const uniqueBookDetails = useLoaderData();
   const { name, categories, description, author, rating, image } =
     uniqueBookDetails;
+
+  const handleSubmit = () => {
+    return setShowModel(false);
+  };
   return (
     <div>
       <section className="p-4 lg:p-8 dark:bg-gray-100 dark:text-gray-800">
@@ -27,6 +34,16 @@ const UniqueBookCategoryDetails = () => {
                 <p className=" font-medium border border-orange-500 rounded-md p-2">
                   Rating : {rating}
                 </p>
+              </div>
+              <div>
+                {" "}
+                <button
+                  onClick={() => setShowModel(true)}
+                  className="p-3 border bg-lime-600 rounded-md text-white font-semibold"
+                >
+                  Borrow
+                </button>
+                {showModel && <MyModel handleSubmit={handleSubmit}></MyModel>}
               </div>
             </div>
             <img
