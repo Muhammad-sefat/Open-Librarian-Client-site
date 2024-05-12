@@ -45,7 +45,7 @@ const MyModel = ({ handleSubmit, uniqueBookDetails }) => {
         newBorroedBook
       );
       console.log(data1);
-      toast("Add Book Successfully");
+      toast("Book Borrowed Successfully");
       e.target.reset();
       const { data2 } = await axios.delete(
         `http://localhost:5000/SubBooks/${_id}`
