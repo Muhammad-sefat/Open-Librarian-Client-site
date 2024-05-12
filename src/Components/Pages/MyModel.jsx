@@ -14,7 +14,10 @@ const MyModel = ({ handleSubmit, uniqueBookDetails }) => {
     };
   }, []);
 
-  const { image, name, categories, _id } = uniqueBookDetails;
+  console.log(uniqueBookDetails);
+
+  const { image, name, categories, _id, author, description, rating } =
+    uniqueBookDetails;
   let newDate = new Date();
   let today = newDate.toLocaleDateString();
 
@@ -32,6 +35,9 @@ const MyModel = ({ handleSubmit, uniqueBookDetails }) => {
       image,
       categories,
       today,
+      author,
+      description,
+      rating,
     };
     try {
       const { data1 } = await axios.post(
