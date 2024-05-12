@@ -25,8 +25,10 @@ const UniqueBookCategories = () => {
   );
   return (
     <div>
-      <h1>releted Book By categories</h1>
-      <div className="grid  md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <h1 className="text-xl md:text-3xl font-semibold my-5 text-lime-600 text-center">
+        Releted Book By Categories
+      </h1>
+      <div className="grid  md:grid-cols-2 lg:grid-cols-3 gap-5 py-5">
         {uniqueBooks.map((book) => (
           <SingleUniqueBookCategories
             key={book._id}

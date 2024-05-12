@@ -9,6 +9,7 @@ import PrivateRoute from "./PrivateRoute";
 import AllBooks from "./Pages/AllBooks";
 import UpdateBook from "./Pages/UpdateBook";
 import UniqueBookCategories from "./Pages/UniqueBookCategories";
+import UniqueBookCategoryDetails from "./Pages/UniqueBookCategoryDetails";
 
 const Router = createBrowserRouter([
   {
@@ -41,6 +42,12 @@ const Router = createBrowserRouter([
       {
         path: "/UniqueBookCategories/:id",
         element: <UniqueBookCategories></UniqueBookCategories>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/subBooks/${params.id}`),
+      },
+      {
+        path: "/uniqueBookDetails/:id",
+        element: <UniqueBookCategoryDetails></UniqueBookCategoryDetails>,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/subBooks/${params.id}`),
       },
