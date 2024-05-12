@@ -22,7 +22,7 @@ const BookCategories = () => {
       <h2 className="text-xl md:text-3xl text-lime-600 font-semibold text-center">
         Our Book Collections
       </h2>
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 my-6">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 my-8">
         {subBooks.slice(0, 6).map((subBook) => (
           <SingleCategories
             key={subBook._id}
