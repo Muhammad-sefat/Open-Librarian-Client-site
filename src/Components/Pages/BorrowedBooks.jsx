@@ -1,23 +1,17 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import toast from "react-hot-toast";
+import { useContext, useEffect, useState } from "react";
 import SingleBorrowBook from "./SingleBorrowBook";
+import { AuthContext } from "../AuthProvider";
 
 const BorrowedBooks = () => {
   const [borrowedBooks, setBorrowedBooks] = useState([]);
-  console.log(borrowedBooks);
+  const { user } = useContext(AuthContext);
   useEffect(() => {
-    const getData = async () => {
-      try {
-        const { data } = await axios("http://localhost:5000/borrowedBook");
-        console.log(data);
+    fetch(`http://localhost:5000/borrowedBook/${user?.email}`)
+      .then((res) => res.json())
+      .then((data) => {
         setBorrowedBooks(data);
-      } catch (error) {
-        toast(error.message);
-      }
-    };
-    getData();
-  }, []);
+      });
+  }, [user]);
   return (
     <div>
       <h2 className="text-center my-3 text-xl md:text-3xl font-semibold text-lime-500">
