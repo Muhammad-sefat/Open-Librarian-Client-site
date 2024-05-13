@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Star from "./Star";
 
 const SingleBook = ({ book }) => {
   const { name, photo, description, author, rating, _id } = book;
@@ -12,7 +13,10 @@ const SingleBook = ({ book }) => {
           <h2 className="card-title">{name}</h2>
           <h3>Author : {author}</h3>
           <p>{description}</p>
-          <p>{rating}</p>
+          <div className="flex items-center">
+            <Star stars={rating}></Star>
+          </div>
+
           <div className="card-actions justify-end">
             <Link to={`/updateBook/${_id}`}>
               <button className="btn bg-lime-500">Update</button>

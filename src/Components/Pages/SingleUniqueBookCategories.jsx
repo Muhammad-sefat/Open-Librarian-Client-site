@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Star from "./Star";
 
 const SingleUniqueBookCategories = ({ book }) => {
   const { name, categories, description, rating, author, image, _id } = book;
@@ -14,13 +15,11 @@ const SingleUniqueBookCategories = ({ book }) => {
             Category : {categories}
           </p>
           <p className="font-medium pb-2 text-left">{description}</p>
-          <div className="flex justify-center items-center gap-3 mb-5">
-            <p className="border border-orange-500 p-1 rounded-md font-semibold">
+          <div>
+            <p className="border border-orange-500 p-1 rounded-md font-semibold mb-3">
               Author : {author}
             </p>
-            <p className="border border-orange-500 p-1 rounded-md font-semibold">
-              Rating : {rating}
-            </p>
+            <Star stars={rating}></Star>
           </div>
           <div className="text-left">
             <Link to={`/uniqueBookDetails/${_id}`}>
