@@ -17,7 +17,7 @@ const UniqueBookCategories = () => {
       }
     };
     getData();
-  }, [subBooks]);
+  }, []);
 
   let uniqueBooks = subBooks.filter(
     (book) => uniqueBook.categories === book.categories

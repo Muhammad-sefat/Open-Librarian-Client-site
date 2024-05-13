@@ -2,9 +2,8 @@ import { useContext, useEffect } from "react";
 import { AuthContext } from "../AuthProvider";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import axios from "axios";
 
-const MyModel = ({ handleSubmit, uniqueBookDetails }) => {
+const MyModel = ({ setShowModel, uniqueBookDetails }) => {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   useEffect(() => {
@@ -39,26 +38,50 @@ const MyModel = ({ handleSubmit, uniqueBookDetails }) => {
       description,
       rating,
     };
-    try {
-      const { data1 } = await axios.post(
-        `http://localhost:5000/borrowed`,
-        newBorroedBook
-      );
-      console.log(data1);
-      toast("Book Borrowed Successfully");
-      e.target.reset();
-      const { data2 } = await axios.delete(
-        `http://localhost:5000/SubBookss/${_id}`
-      );
-      console.log(data2);
-      navigate("/borrowed-book");
-    } catch (err) {
-      toast(err?.message);
-    }
+
+    fetch(`http://localhost:5000/borrowed`, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newBorroedBook),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        toast("Book Borrowed Successfully");
+        e.target.reset();
+        fetch(`http://localhost:5000/SubBookss/${_id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            navigate("/borrowed-book");
+          });
+      });
+  };
+  //   try {
+  //     const { data1 } = await axios.post(
+  //       `http://localhost:5000/borrowed`,
+  //       newBorroedBook
+  //     );
+  //     console.log(data1);
+  //     const { data2 } = await axios.delete(
+  //       `http://localhost:5000/SubBookss/${_id}`
+  //     );
+  //     console.log(data2);
+  //     navigate("/borrowed-book");
+  //   } catch (err) {
+  //     toast(err?.message);
+  //   }
+  // };
+  const handleModel = () => {
+    return setShowModel(false);
   };
   return (
     <div className="relative z-50">
-      <div className="modal-wrapper" onClick={handleSubmit}></div>
+      <div className="modal-wrapper" onClick={handleModel}></div>
       <div className="modal-container flex items-center justify-center text-center dark:bg-gray-50 dark:text-gray-800">
         <form
           onSubmit={handleForm}

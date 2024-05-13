@@ -9,7 +9,7 @@ const BorrowedBooks = () => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const { data } = await axios.get("http://localhost:5000/borrowedBook");
+        const { data } = await axios("http://localhost:5000/borrowedBook");
         console.log(data);
         setBorrowedBooks(data);
       } catch (error) {

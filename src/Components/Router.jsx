@@ -44,13 +44,13 @@ const Router = createBrowserRouter([
         path: "/UniqueBookCategories/:id",
         element: <UniqueBookCategories></UniqueBookCategories>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/subBooks/${params.id}`),
+          fetch(`http://localhost:5000/sub-Books/${params.id}`),
       },
       {
         path: "/uniqueBookDetails/:id",
         element: <UniqueBookCategoryDetails></UniqueBookCategoryDetails>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/subBooks/${params.id}`),
+          fetch(`http://localhost:5000/sub-Books/${params.id}`),
       },
       {
         path: "/borrowed-book",

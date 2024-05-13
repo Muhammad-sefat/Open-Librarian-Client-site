@@ -8,9 +8,6 @@ const UniqueBookCategoryDetails = () => {
   const { name, categories, description, author, rating, image } =
     uniqueBookDetails;
 
-  const handleSubmit = () => {
-    return setShowModel(false);
-  };
   return (
     <div>
       <section className="p-4 lg:p-8 dark:bg-gray-100 dark:text-gray-800">
@@ -45,7 +42,7 @@ const UniqueBookCategoryDetails = () => {
                 </button>
                 {showModel && (
                   <MyModel
-                    handleSubmit={handleSubmit}
+                    setShowModel={setShowModel}
                     uniqueBookDetails={uniqueBookDetails}
                   ></MyModel>
                 )}
