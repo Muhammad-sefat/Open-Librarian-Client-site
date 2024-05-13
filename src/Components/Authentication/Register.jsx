@@ -6,6 +6,7 @@ import { AuthContext } from "../AuthProvider";
 import { NavLink, useNavigate } from "react-router-dom";
 import lottie from "../../assets/register.json";
 import Lottie from "lottie-react";
+import axios from "axios";
 
 const Register = () => {
   const { createUser, updateUserProfile, setUser, user } =
@@ -30,6 +31,14 @@ const Register = () => {
       updateUserProfile(name, photo);
       setUser({ ...user?.email, photoURL: photo, displayName: name });
       console.log(result.user);
+      const { data } = await axios.post(
+        `${import.meta.env.VITE_API_URL}/jwt`,
+        {
+          email: result?.user?.email,
+        },
+        { withCredentials: true }
+      );
+      console.log(data);
       toast("Register Successfully");
       reset();
       navigate("/");

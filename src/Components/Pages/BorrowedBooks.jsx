@@ -17,7 +17,7 @@ const BorrowedBooks = () => {
       <h2 className="text-center my-3 text-xl md:text-3xl font-semibold text-lime-500">
         My Borrowed Books
       </h2>
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 my-8">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mt-8">
         {borrowedBooks.map((book) => (
           <SingleBorrowBook
             key={book._id}

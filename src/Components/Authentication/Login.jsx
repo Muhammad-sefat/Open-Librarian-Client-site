@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 import { useForm } from "react-hook-form";
 import lottie from "../../assets/login.json";
 import Lottie from "lottie-react";
+import axios from "axios";
 
 const Login = () => {
   const { signIn, signInWithGoogle } = useContext(AuthContext);
@@ -23,6 +24,15 @@ const Login = () => {
       const result = await signInWithGoogle();
       console.log(result?.user);
 
+      const { data } = await axios.post(
+        `${import.meta.env.VITE_API_URL}/jwt`,
+        {
+          email: result?.user?.email,
+        },
+        { withCredentials: true }
+      );
+      console.log(data);
+
       toast("Login Success");
       navigate(from);
     } catch (error) {
@@ -36,6 +46,14 @@ const Login = () => {
     try {
       const result = await signIn(email, password);
       console.log(result?.user);
+      const { data } = await axios.post(
+        `${import.meta.env.VITE_API_URL}/jwt`,
+        {
+          email: result?.user?.email,
+        },
+        { withCredentials: true }
+      );
+      console.log(data);
       toast("Signin Success");
       navigate(from);
     } catch (error) {

@@ -1,7 +1,11 @@
 import axios from "axios";
+import { useContext } from "react";
 import toast from "react-hot-toast";
+import { AuthContext } from "../AuthProvider";
 
 const AddBook = () => {
+  const { user } = useContext(AuthContext);
+  const email = user?.email;
   const handleAddBook = async (e) => {
     e.preventDefault();
     const form = e.target;
@@ -23,6 +27,7 @@ const AddBook = () => {
       quantity,
       rating,
       aboutBook,
+      email,
     };
     try {
       const { data } = await axios.post(`http://localhost:5000/book`, newBook);
@@ -184,7 +189,7 @@ const AddBook = () => {
               </div>
               <div className="col-span-full sm:col-span-2">
                 <label htmlFor="rating" className="text-lg font-semibold">
-                  Rating
+                  Rating(1-5)
                 </label>
                 <input
                   id="rating"

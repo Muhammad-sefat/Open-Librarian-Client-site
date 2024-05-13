@@ -46,28 +46,12 @@ const SingleBorrowBook = ({ book, borrowedBooks, setBorrowedBooks }) => {
           });
       });
   };
-  //   try {
-  //     const { data1 } = await axios.post(
-  //       `http://localhost:5000/sub_Books`,
-  //       newBook
-  //     );
-  //     console.log(data1);
-  //     const { data2 } = await axios.delete(
-  //       `http://localhost:5000/borrowedd/${id}`
-  //     );
-  //     const remaining = borrowedBooks.filter((book) => book._id !== id);
-  //     setBorrowedBooks(remaining);
-  //     console.log(data2);
-  //     toast("Book Return Successfully");
-  //   } catch (error) {
-  //     toast(error.message);
-  //   }
-  // };
+
   return (
     <div>
-      <div className="card bg-base-100 shadow-xl h-2/3">
+      <div className="card bg-base-100 shadow-xl h-[80%]">
         <figure>
-          <img src={image} alt="book" />
+          <img className="w-2/3" src={image} alt="book" />
         </figure>
         <div className="card-body">
           <h2 className="card-title">{name}</h2>

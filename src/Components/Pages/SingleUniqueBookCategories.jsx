@@ -5,9 +5,9 @@ const SingleUniqueBookCategories = ({ book }) => {
   const { name, categories, description, rating, author, image, _id } = book;
   return (
     <div data-aos="zoom-in" data-aos-duration="1000">
-      <div className="card  bg-base-100 shadow-xl h-[80%]">
+      <div className="card  bg-base-100 shadow-xl h-[90%]">
         <figure>
-          <img className="w-10/12" src={image} alt="Image" />
+          <img className="w-2/3" src={image} alt="Image" />
         </figure>
         <div className="card-body">
           <h2 className="card-title font-bold text-left">{name}</h2>

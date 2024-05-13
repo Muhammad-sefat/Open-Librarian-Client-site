@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import MyModel from "./MyModel";
+import Star from "./Star";
 
 const UniqueBookCategoryDetails = () => {
   const [showModel, setShowModel] = useState(false);
@@ -28,13 +29,14 @@ const UniqueBookCategoryDetails = () => {
                 <p className=" font-medium border border-orange-500 rounded-md p-2">
                   Author : {author}
                 </p>
-                <p className=" font-medium border border-orange-500 rounded-md p-2">
-                  Rating : {rating}
+                <p className=" font-medium rounded-md p-2">
+                  <Star stars={rating}></Star>
                 </p>
               </div>
               <div>
                 {" "}
                 <button
+                  disabled={uniqueBookDetails.length === 0}
                   onClick={() => setShowModel(true)}
                   className="p-3 border bg-lime-600 rounded-md text-white font-semibold"
                 >
