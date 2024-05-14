@@ -128,9 +128,8 @@ const MyModel = ({ setShowModel, uniqueBookDetails }) => {
             className="flex items-center border h-12 px-4 mt-2 rounded dark:text-gray-50 focus:outline-none focus:ring-2 focus:dark:border-violet-600 focus:dark:ring-violet-600"
           />
           <button
-            // onClick={handleSubmit}
             type="submit"
-            className="flex items-center justify-center border h-12 px-6 mt-8 text-sm font-semibold rounded dark:bg-violet-600 dark:text-gray-50"
+            className="flex items-center justify-center text-orange-600 border h-12 px-6 mt-8 text-sm font-semibold rounded dark:bg-violet-600 dark:text-gray-50"
           >
             Submit
           </button>

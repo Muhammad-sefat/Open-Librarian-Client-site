@@ -1,13 +1,15 @@
 import axios from "axios";
+import { useContext } from "react";
 import toast from "react-hot-toast";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { AuthContext } from "../AuthProvider";
 
 const UpdateBook = () => {
+  const { user } = useContext(AuthContext);
   const singleBook = useLoaderData();
   const navigate = useNavigate();
   const { name, photo, category, author, rating, _id } = singleBook;
-  console.log(singleBook);
   const handleUpdateBook = async (e) => {
     e.preventDefault();
 
@@ -23,13 +25,14 @@ const UpdateBook = () => {
       photo,
       author,
       rating,
+      email: user?.email,
     };
-    console.log(updateBook);
 
     try {
       const { data } = await axios.put(
         `http://localhost:5000/books/${_id}`,
-        updateBook
+        updateBook,
+        { withCredentials: true }
       );
       console.log(data);
       if (data.modifiedCount > 0) {

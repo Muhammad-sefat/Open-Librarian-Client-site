@@ -8,7 +8,7 @@ const Footer = () => {
           <div className="lg:flex">
             <div className="w-full -mx-6 lg:w-2/5">
               <div className="px-6">
-                <h1 className="text-2xl font-bold gap-0">
+                <h1 className="text-2xl text-orange-600 font-bold gap-0">
                   Open<span className="text-lime-500">Librarian</span>
                 </h1>
 

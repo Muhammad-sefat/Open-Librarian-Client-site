@@ -22,12 +22,13 @@ const Login = () => {
   const handleGoogleForm = async () => {
     try {
       const result = await signInWithGoogle();
-      console.log(result?.user);
+      const user = result?.user;
 
       const { data } = await axios.post(
         `${import.meta.env.VITE_API_URL}/jwt`,
         {
-          email: result?.user?.email,
+          // email: result?.user?.email,
+          user,
         },
         { withCredentials: true }
       );

@@ -30,7 +30,9 @@ const AddBook = () => {
       email,
     };
     try {
-      const { data } = await axios.post(`http://localhost:5000/book`, newBook);
+      const { data } = await axios.post(`http://localhost:5000/book`, newBook, {
+        withCredentials: true,
+      });
       console.log(data);
       toast("Add Book Successfully");
       e.target.reset();

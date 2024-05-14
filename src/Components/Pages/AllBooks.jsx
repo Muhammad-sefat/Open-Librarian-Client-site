@@ -10,7 +10,9 @@ const AllBooks = () => {
   const [view, setView] = useState(false);
   useEffect(() => {
     const getData = async () => {
-      const { data } = await axios("http://localhost:5000/books");
+      const { data } = await axios(`http://localhost:5000/books`, {
+        withCredentials: true,
+      });
       setBooks(data);
     };
     getData();
@@ -63,7 +65,7 @@ const AllBooks = () => {
                 <tbody>
                   {/* row 1 */}
                   {books.map((book) => (
-                    <tr>
+                    <tr key={book._id}>
                       <td>
                         <div className="flex items-center gap-3">
                           <div className="avatar">
