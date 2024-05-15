@@ -23,7 +23,7 @@ const SingleBorrowBook = ({ book, borrowedBooks, setBorrowedBooks }) => {
       rating,
     };
     console.log(newBook);
-    fetch(`http://localhost:5000/sub_Books`, {
+    fetch(`${import.meta.env.VITE_API_URL}/sub_Books`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -33,7 +33,7 @@ const SingleBorrowBook = ({ book, borrowedBooks, setBorrowedBooks }) => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        fetch(`http://localhost:5000/borrowedd/${_id}`, {
+        fetch(`${import.meta.env.VITE_API_URL}/borrowedd/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

@@ -37,9 +37,10 @@ const MyModel = ({ setShowModel, uniqueBookDetails }) => {
       author,
       description,
       rating,
+      jobId: _id,
     };
 
-    fetch(`http://localhost:5000/borrowed`, {
+    fetch(`${import.meta.env.VITE_API_URL}/borrowed`, {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -51,7 +52,7 @@ const MyModel = ({ setShowModel, uniqueBookDetails }) => {
         console.log(data);
         toast("Book Borrowed Successfully");
         e.target.reset();
-        fetch(`http://localhost:5000/SubBookss/${_id}`, {
+        fetch(`${import.meta.env.VITE_API_URL}/SubBookss/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -61,33 +62,19 @@ const MyModel = ({ setShowModel, uniqueBookDetails }) => {
           });
       });
   };
-  //   try {
-  //     const { data1 } = await axios.post(
-  //       `http://localhost:5000/borrowed`,
-  //       newBorroedBook
-  //     );
-  //     console.log(data1);
-  //     const { data2 } = await axios.delete(
-  //       `http://localhost:5000/SubBookss/${_id}`
-  //     );
-  //     console.log(data2);
-  //     navigate("/borrowed-book");
-  //   } catch (err) {
-  //     toast(err?.message);
-  //   }
-  // };
+
   const handleModel = () => {
     return setShowModel(false);
   };
   return (
     <div className="relative z-50">
       <div className="modal-wrapper" onClick={handleModel}></div>
-      <div className="modal-container flex items-center justify-center text-center dark:bg-gray-50 dark:text-gray-800">
+      <div className="modal-container flex items-center justify-center text-center dark:bg-gray-50 dark:text-gray-800 ">
         <form
           onSubmit={handleForm}
           noValidate=""
           action=""
-          className="flex flex-col w-full max-w-4xl  p-12 rounded-3xl  shadow-lg dark:text-gray-800"
+          className="flex flex-col rounded-3xl w-full p-5  shadow-lg dark:text-gray-800"
         >
           <label
             htmlFor="username"
@@ -100,7 +87,7 @@ const MyModel = ({ setShowModel, uniqueBookDetails }) => {
             type="text"
             name="userName"
             defaultValue={user?.displayName}
-            className="flex items-center border h-12 px-4 mt-2 rounded dark:text-gray-50 focus:outline-none focus:ring-2 focus:dark:border-violet-600 focus:dark:ring-violet-600"
+            className="flex items-center border h-12 px-4  mt-2 rounded dark:text-gray-50 focus:outline-none focus:ring-2 focus:dark:border-violet-600 focus:dark:ring-violet-600"
           />
           <label
             htmlFor="email"

@@ -91,8 +91,8 @@ const Navbar = () => {
               </li>
             </ul>
           </div>
-          <img className="w-16 rounded-lg" src={logo} alt="" />
-          <a className="btn btn-ghost gap-0 text-2xl font-bold">
+          <img className="w-16 rounded-lg hidden md:block" src={logo} alt="" />
+          <a className="btn btn-ghost gap-0 text-xl md:text-2xl font-bold">
             Open<span className="text-lime-600">Librarian</span>
           </a>
         </div>
@@ -173,7 +173,7 @@ const Navbar = () => {
           {!user && (
             <Link
               to={"/login"}
-              className="p-2 border font-medium rounded-md border-lime-600"
+              className="py-1 px-2 border font-medium rounded-md border-lime-600"
             >
               Login
             </Link>

@@ -10,7 +10,9 @@ const UniqueBookCategories = () => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const { data } = await axios(`http://localhost:5000/subBooks`);
+        const { data } = await axios(
+          `${import.meta.env.VITE_API_URL}/subBooks`
+        );
         setSubBooks(data);
       } catch (error) {
         toast(error.message);

@@ -32,7 +32,11 @@ const Router = createBrowserRouter([
       },
       {
         path: "/all-books",
-        element: <AllBooks></AllBooks>,
+        element: (
+          <PrivateRoute>
+            <AllBooks></AllBooks>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/updateBook/:id",
@@ -42,23 +46,31 @@ const Router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/books/${params.id}`),
+          fetch(`${import.meta.env.VITE_API_URL}/books/${params.id}`),
       },
       {
         path: "/UniqueBookCategories/:id",
         element: <UniqueBookCategories></UniqueBookCategories>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/sub-Books/${params.id}`),
+          fetch(`${import.meta.env.VITE_API_URL}/sub-Books/${params.id}`),
       },
       {
         path: "/uniqueBookDetails/:id",
-        element: <UniqueBookCategoryDetails></UniqueBookCategoryDetails>,
+        element: (
+          <PrivateRoute>
+            <UniqueBookCategoryDetails></UniqueBookCategoryDetails>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/sub-Books/${params.id}`),
+          fetch(`${import.meta.env.VITE_API_URL}/sub-Books/${params.id}`),
       },
       {
         path: "/borrowed-book",
-        element: <BorrowedBooks></BorrowedBooks>,
+        element: (
+          <PrivateRoute>
+            <BorrowedBooks></BorrowedBooks>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/login",

@@ -5,7 +5,7 @@ const SingleBook = ({ book }) => {
   const { name, photo, description, author, rating, _id } = book;
   return (
     <div>
-      <div className="card card-side  bg-base-100 shadow-xl">
+      <div className="card card-side h-full  bg-base-100 shadow-xl">
         <figure>
           <img className="w-1/2" src={photo} alt="Movie" />
         </figure>

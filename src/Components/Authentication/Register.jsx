@@ -22,7 +22,7 @@ const Register = () => {
 
   const onSubmit = async (data) => {
     const { email, password, photo, name } = data;
-    if (!/^(?=.*[a-z])(?=.*[A-Z]).{6,}$/.test(password)) {
+    if (!/^(?=.*[!@#$%^&*])(?=.*[A-Z]).{6,}$/.test(password)) {
       toast("Please Provide More Stronge Password");
       return;
     }
@@ -30,7 +30,6 @@ const Register = () => {
       const result = await createUser(email, password);
       updateUserProfile(name, photo);
       setUser({ ...user?.email, photoURL: photo, displayName: name });
-      console.log(result.user);
       const { data } = await axios.post(
         `${import.meta.env.VITE_API_URL}/jwt`,
         {

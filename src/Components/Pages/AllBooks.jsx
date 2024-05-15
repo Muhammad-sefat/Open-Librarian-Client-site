@@ -10,38 +10,48 @@ const AllBooks = () => {
   const [view, setView] = useState(false);
   useEffect(() => {
     const getData = async () => {
-      const { data } = await axios(`http://localhost:5000/books`, {
+      const { data } = await axios(`${import.meta.env.VITE_API_URL}/books`, {
         withCredentials: true,
       });
       setBooks(data);
     };
     getData();
   }, []);
+
+  const handleAllBook = () => {
+    const allBook = books.filter((book) => book.quantity > 0);
+    setBooks(allBook);
+  };
   return (
     <div>
       <h1 className="text-3xl font-semibold text-center my-5 bg-lime-500 p-2 rounded-md">
         Our All Book Here
       </h1>
       <div className="flex items-center justify-center my-5 gap-5">
-        <NavLink
-          className={({ isActive }) => (isActive ? " text-lime-600" : "")}
-        >
-          <button onClick={() => setView(false)}>
-            <MdViewList className="text-2xl"></MdViewList>
-          </button>
-        </NavLink>
+        <select onClick={handleAllBook} className="p-2 border rounded">
+          <option value="show all book">Show All Book</option>
+        </select>
+        <div className="flex items-center gap-4 border py-1 px-3 rounded">
+          <NavLink
+            className={({ isActive }) => (isActive ? " text-lime-600" : "")}
+          >
+            <button onClick={() => setView(false)}>
+              <MdViewList className="text-2xl"></MdViewList>
+            </button>
+          </NavLink>
 
-        <NavLink
-          className={({ isActive }) => (isActive ? " text-orange-500" : "")}
-        >
-          <button onClick={() => setView(true)}>
-            <MdGridView className="text-2xl"></MdGridView>
-          </button>
-        </NavLink>
+          <NavLink
+            className={({ isActive }) => (isActive ? " text-orange-500" : "")}
+          >
+            <button onClick={() => setView(true)}>
+              <MdGridView className="text-2xl"></MdGridView>
+            </button>
+          </NavLink>
+        </div>
       </div>
       {view === true ? (
         <>
-          <div className="grid lg:grid-cols-2 gap-5 py-5">
+          <div className="grid md:grid-cols-2  gap-5 py-5">
             {books.map((book) => (
               <SingleBook key={book._id} book={book}></SingleBook>
             ))}

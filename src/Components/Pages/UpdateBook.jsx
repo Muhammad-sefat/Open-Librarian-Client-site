@@ -30,7 +30,7 @@ const UpdateBook = () => {
 
     try {
       const { data } = await axios.put(
-        `http://localhost:5000/books/${_id}`,
+        `${import.meta.env.VITE_API_URL}/books/${_id}`,
         updateBook,
         { withCredentials: true }
       );
@@ -61,7 +61,7 @@ const UpdateBook = () => {
           <fieldset className="grid grid-cols-3 md:w-[70%] mx-auto gap-6 p-6 rounded-md shadow-sm dark:bg-gray-50">
             <div className="grid grid-cols-6 gap-4 col-span-full lg:col-span-3 mx-auto">
               <div className="col-span-full mb-8">
-                <h2 className="text-center text-lg md:text-3xl text-lime-600 font-semibold">
+                <h2 className="text-center text-xl md:text-3xl text-lime-600 font-semibold">
                   Update Your Book
                 </h2>
                 <p className="md:w-[80%] mx-auto text-center mt-3">

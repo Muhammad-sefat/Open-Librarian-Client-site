@@ -30,9 +30,13 @@ const AddBook = () => {
       email,
     };
     try {
-      const { data } = await axios.post(`http://localhost:5000/book`, newBook, {
-        withCredentials: true,
-      });
+      const { data } = await axios.post(
+        `${import.meta.env.VITE_API_URL}/book`,
+        newBook,
+        {
+          withCredentials: true,
+        }
+      );
       console.log(data);
       toast("Add Book Successfully");
       e.target.reset();
