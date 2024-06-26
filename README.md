@@ -1,8 +1,29 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# OpenLibrarian
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+
+
+
+## Features
+
+- Use Firebase Authentication by Email/Password,Google.
+- Use MongoDB for CURD Operation"
+- Filtaring Data by Email and Category.
+- Responsive For All Device and Use Light and Dark Mood.
+- Use React Dom,Private Route,Active Link.
+- Use JWT for valid user and lottie animation,slider.
+
+
+#### Assignment_ID: assignment_category_0008
+
+
+
+
+
+
+
+## 🔗 Links
+Live Link : https://open-librarian.web.app/
+
